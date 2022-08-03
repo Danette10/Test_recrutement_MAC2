@@ -1,7 +1,28 @@
+<?php session_start();
+include "../includes/db.php";
+
+$selectInfo = $db->prepare("SELECT name, firstname, email, phone, address, postal_code, city, comment FROM users WHERE id = :id");
+
+$selectInfo->execute([
+    'id' => $_SESSION['id']
+]);
+
+$info = $selectInfo->fetch(PDO::FETCH_ASSOC);
+
+$name = $info['name'];
+$firstname = $info['firstname'];
+$email = $info['email'];
+$phone = $info['phone'];
+$address = $info['address'];
+$postalCode = $info['postal_code'];
+$city = $info['city'];
+$comment = $info['comment'];
+
+?>
 <!doctype html>
 <html lang="fr">
 <?php
-$title = "Test de recrutement - Inscription";
+$title = "Test de recrutement - Modifier mon profil";
 $linkCss = "../css/style.css";
 include "../includes/head.php";
 ?>
@@ -15,41 +36,38 @@ include "../includes/head.php";
             <?php include "../includes/message.php"; ?>
         </div>
 
-        <h1 class="text-center text-white">Inscription</h1>
+        <h1 class="text-center text-white">Modifier mon profil</h1>
 
         <div class="container mt-5">
+
             <div class="row justify-content-center">
-                <form action="../checks/checkRegistration.php" method="post">
+
+                <form action="../checks/checkEditProfile.php" method="post">
 
                     <div class="d-flex">
 
                         <div class="col-md-6 me-4">
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="text" class="p-3" id="name" name="name" value="<?= $_COOKIE['name'] ?? '' ?>" required>
+                                <input type="text" class="p-3" id="name" name="name" value="<?= $name ?>" required>
                                 <span>Nom</span>
                             </div>
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="text" class="p-3" id="firstname" name="firstname" value="<?= $_COOKIE['firstname'] ?? '' ?>" required>
+                                <input type="text" class="p-3" id="firstname" name="firstname" value="<?= $firstname ?>" required>
                                 <span>Prénom</span>
                             </div>
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="email" class="p-3" id="email" name="email" value="<?= $_COOKIE['email'] ?? '' ?>" oninput="checkEmail()" required>
+                                <input type="email" class="p-3" id="email" name="email" value="<?= $email ?>" oninput="checkEmail()" required>
                                 <span>Email</span>
                             </div>
 
                             <span id="logEmail" class="mb-3"></span>
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="number" class="p-3" id="phone" name="phone" value="<?= $_COOKIE['phone'] ?? '' ?>" required>
+                                <input type="number" class="p-3" id="phone" name="phone" value="<?= $phone ?>" required>
                                 <span>Téléphone</span>
-                            </div>
-
-                            <div class="form-group mb-3 inputBox">
-                                <input type="password" class="p-3" id="password" name="password" required>
-                                <span>Mot de passe</span>
                             </div>
 
                         </div>
@@ -57,39 +75,37 @@ include "../includes/head.php";
                         <div class="col-md-6">
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="text" class="p-3" id="address" name="address" value="<?= $_COOKIE['address'] ?? '' ?>" required>
+                                <input type="text" class="p-3" id="address" name="address" value="<?= $address ?>" required>
                                 <span>Adresse</span>
                             </div>
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="number" class="p-3" id="postalCode" name="postalCode" value="<?= $_COOKIE['postalCode'] ?? '' ?>" required>
+                                <input type="number" class="p-3" id="postalCode" name="postalCode" value="<?= $postalCode ?>" required>
                                 <span>Code postal</span>
                             </div>
 
                             <div class="form-group mb-3 inputBox">
-                                <input type="text" class="p-3" id="city" name="city" value="<?= $_COOKIE['city'] ?? '' ?>" required>
+                                <input type="text" class="p-3" id="city" name="city" value="<?= $city ?>" required>
                                 <span>Ville</span>
                             </div>
 
                             <div class="form-group mb-2 inputBox">
-                                <textarea class="p-3" id="comment" name="comment" rows="1" required><?= $_COOKIE['comment'] ?? '' ?></textarea>
+                                <textarea class="p-3" id="comment" name="comment" rows="1" required><?= $comment ?></textarea>
                                 <span>Commentaire</span>
-                            </div>
-
-                            <div class="form-group mb-3 inputBox">
-                                <input type="password" class="p-3" id="cPassword" name="cPassword" required>
-                                <span>Confirmation du mot de passe</span>
                             </div>
 
                         </div>
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Inscription</button>
+                    <button type="submit" class="btn btn-primary">Sauvegarder les modifications</button>
 
                 </form>
+
             </div>
+
         </div>
+
     </main>
 
     <?php

@@ -1,20 +1,3 @@
-<?php
-if(isset($_SESSION['id'])){
-    $selectDemande = $db->prepare("SELECT id_applicant, id_recipient FROM relation WHERE id_recipient = :id_recipient");
-    $selectDemande->execute([
-        'id_recipient' => $_SESSION['id']
-    ]);
-    $demande = $selectDemande->fetchAll(PDO::FETCH_ASSOC);
-    $idDemande = [];
-    foreach ($demande as $key => $value) {
-        $idDemande[] = $value['id_applicant'];
-    }
-
-    $countDemande = count($idDemande);
-}else{
-    $countDemande = 0;
-}
-?>
 <header>
     <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container-fluid">
@@ -31,16 +14,20 @@ if(isset($_SESSION['id'])){
                         ?>
 
                         <li class="nav-item">
-                            <a class="nav-link <?= $title == "Test de recrutement - Connexion" ? 'active' : ''?>" href="#">Connexion</a>
+                            <a class="nav-link <?= $title == "Test de recrutement - Connexion" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/connexion/">Connexion</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link <?= $title == "Test de recrutement - Inscription" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/inscrivez-vous/">Inscription</a>
+                            <a class="nav-link <?= $title == "Test de recrutement - Inscription" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/inscription/">Inscription</a>
                         </li>
                     <?php } else{ ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/Test_recrutement_MAC2/deconnexion.php">Déconnexion</a>
+                            <a class="nav-link <?= $title == "Test de recrutement - Modifier mon profil" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/modifier-mon-profil/">Modifier mon profil</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://localhost/Test_recrutement_MAC2/logout.php">Déconnexion</a>
                         </li>
 
                     <?php } ?>

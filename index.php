@@ -12,7 +12,9 @@ include "includes/head.php";
 
     <main>
 
-        <?php include "includes/message.php"; ?>
+        <div class="container col-md-6">
+            <?php include "includes/message.php"; ?>
+        </div>
 
         <h1 class="text-center text-white" id="title_home">Test de recrutement réalisé par Dan Sebag</h1>
 
