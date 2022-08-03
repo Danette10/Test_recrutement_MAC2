@@ -43,10 +43,58 @@ header{
     transition: 0.5s;
 }
 
+.active{
+    color: #FF8020 !important;
+}
+
 
 main, footer {
     padding: 30px;
 }
+
+.inputBox{
+    position: relative;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,0.25);
+    outline: none !important;
+    background: transparent;
+    font-size: 1em;
+    color: white;
+}
+
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding: 10px !important;
+    color: white;
+    pointer-events: none;
+    font-size: 1em;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 0.1em;
+}
+
+.inputBox input:valid ~ span, .inputBox input:focus ~ span, .inputBox textarea:valid ~ span, .inputBox textarea:focus ~ span{
+    color: white;
+    transform: translateX(10px) translateY(-15px);
+    font-size: 0.65em;
+    background: #02696B;
+    letter-spacing: 0.2em;
+}
+
+input{
+    border-radius: 5px !important;
+}
+
+textarea{
+    border-radius: 5px !important;
+}
+
+
 
 
 

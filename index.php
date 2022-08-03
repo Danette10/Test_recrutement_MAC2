@@ -1,7 +1,4 @@
-<?php session_start();
-include "includes/db.php";
-include "includes/functions.php";
-?>
+<?php session_start(); ?>
 <!doctype html>
 <html lang="fr">
 <?php
@@ -23,6 +20,9 @@ include "includes/head.php";
     </main>
 
 
-    <?php include "includes/footer.php"; ?>
+    <?php
+    include "includes/script.php";
+    include "includes/footer.php";
+    ?>
 </body>
 </html>

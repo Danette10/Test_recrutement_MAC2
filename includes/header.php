@@ -24,23 +24,23 @@ if(isset($_SESSION['id'])){
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/JewLove_v2/">Accueil</a>
+                        <a class="nav-link <?= $title == "Test de recrutement - Accueil" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/">Accueil</a>
                     </li>
                     <?php
                     if(!isset($_SESSION['id'])){
                         ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/JewLove_v2/connexion">Connexion</a>
+                            <a class="nav-link <?= $title == "Test de recrutement - Connexion" ? 'active' : ''?>" href="#">Connexion</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/JewLove_v2/inscrivez-vous">Inscription</a>
+                            <a class="nav-link <?= $title == "Test de recrutement - Inscription" ? 'active' : ''?>" href="http://localhost/Test_recrutement_MAC2/inscrivez-vous/">Inscription</a>
                         </li>
                     <?php } else{ ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="http://localhost/JewLove_v2/deconnexion.php">Déconnexion</a>
+                            <a class="nav-link" href="http://localhost/Test_recrutement_MAC2/deconnexion.php">Déconnexion</a>
                         </li>
 
                     <?php } ?>
