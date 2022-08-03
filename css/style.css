@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,700;1,400&display=swap');
+
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
 body{
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     transition: 0.5s;
-    background: linear-gradient(to right, #738DDF, #D16D9C);
+    background: #02696B;
 }
 
 header{
@@ -14,7 +20,7 @@ header{
     width: 100%;
     z-index: 2;
     transition: 0.4s;
-    background: linear-gradient(to right, #738DDF, #D16D9C);
+    background: #02696B;
 }
 
 .navbar{
@@ -32,8 +38,8 @@ header{
 }
 
 .nav-item a:hover{
-    color: #460568;
-    transform: scale(1.2);
+    color: #FF8020;
+    transform: scale(1.1);
     transition: 0.5s;
 }
 
