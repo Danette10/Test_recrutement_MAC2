@@ -3,3 +3,4 @@ RewriteEngine On
 RewriteRule ^inscription/$ form/registration.php
 RewriteRule ^connexion/$ form/login.php
 RewriteRule ^modifier-mon-profil/$ profile/editProfile.php
+RewriteRule ^admin/$ admin/viewUsers.php

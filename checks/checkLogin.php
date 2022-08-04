@@ -21,7 +21,7 @@ if (!$reponse){
     setcookie('email', $email, time() + (60 * 60 * 48), "/");
 
 
-    $select = $db->prepare("SELECT id FROM users WHERE email = :email AND password = :password");
+    $select = $db->prepare("SELECT id, rights FROM users WHERE email = :email AND password = :password");
 
     $select->execute([
         'email' => $email,

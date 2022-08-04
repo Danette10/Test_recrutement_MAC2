@@ -30,10 +30,16 @@
                             <a class="nav-link" href="http://localhost/Test_recrutement_MAC2/logout.php">Déconnexion</a>
                         </li>
 
+
                     <?php } ?>
 
 
                 </ul>
+
+                <?php if(isset($_SESSION['rights']) && $_SESSION['rights'] == 2){ ?>
+                        <a class="nav-link" href="http://localhost/Test_recrutement_MAC2/admin/"><img src="http://localhost/Test_recrutement_MAC2/images/ico_view_users.png" width="50"></a>
+
+                <?php } ?>
             </div>
         </div>
     </nav>

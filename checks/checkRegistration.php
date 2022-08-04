@@ -12,6 +12,8 @@ $comment = htmlspecialchars($_POST['comment']);
 $password = htmlspecialchars($_POST['password']);
 $cPassword = htmlspecialchars($_POST['cPassword']);
 
+$comment = nl2br($comment);
+
 if (!empty($name) && !empty($firstname) && !empty($email) && !empty($phone) && !empty($address) && !empty($postalCode) && !empty($city) && !empty($comment) && !empty($password) && !empty($cPassword)) {
 
     setcookie('name', $name, time() + 3600, '/');

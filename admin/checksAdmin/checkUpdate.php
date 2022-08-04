@@ -1,6 +1,7 @@
 <?php
 session_start();
-include "../includes/db.php";
+include "../../includes/db.php";
+$idUser = htmlspecialchars($_GET['id']);
 
 $name = htmlspecialchars($_POST['name']);
 $firstname = htmlspecialchars($_POST['firstname']);
@@ -16,7 +17,7 @@ $comment = nl2br($comment);
 $selectInfo = $db->prepare("SELECT name, firstname, email, phone, address, postal_code, city, comment FROM users WHERE id = :id");
 
 $selectInfo->execute([
-    'id' => $_SESSION['id']
+    'id' => $idUser
 ]);
 
 $info = $selectInfo->fetch(PDO::FETCH_ASSOC);
@@ -45,19 +46,19 @@ if(!empty($name) && !empty($firstname) && !empty($email) && !empty($phone) && !e
             'postal_code' => $postalCode,
             'city' => $city,
             'comment' => $comment,
-            'id' => $_SESSION['id']
+            'id' => $idUser
         ]);
 
-        header('Location: http://localhost/Test_recrutement_MAC2/index.php?message=Vos informations ont été mises à jour !&type=success');
+        header('Location: http://localhost/Test_recrutement_MAC2/admin/viewUsers.php?message=Les informations ont été mises à jour !&type=success');
         exit();
 
     } else {
-        header('Location: http://localhost/Test_recrutement_MAC2/index.php?message=Vos informations ne sont pas modifiées !&type=danger');
+        header('Location: http://localhost/Test_recrutement_MAC2/admin/viewUsers.php?message=les informations n\'ont pas été modifiées !&type=danger');
         exit();
     }
 
 }else{
-    header('Location: http://localhost/Test_recrutement_MAC2/profile/editProfile.php?message=Vous n\'avez pas rempli tous les champs !&type=danger');
+    header('Location: http://localhost/Test_recrutement_MAC2/admin/editUsers.php?message=Tout les champs ne sont pas remplis !&type=danger');
     exit();
 }
 

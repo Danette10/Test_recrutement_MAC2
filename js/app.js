@@ -8,3 +8,31 @@ function checkEmail() {
         logEmail.innerHTML = "<p style='letter-spacing: 2px; color: #F12814'>Email invalide</p>";
     }
 }
+
+function reloadTable(){
+
+let request = new XMLHttpRequest();
+    request.open("GET", "http://localhost/Test_recrutement_MAC2/admin/getUsers.php");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            document.getElementById("users").innerHTML = request.responseText;
+        }
+    }
+    request.send();
+
+}
+
+function deleteUsers(id){
+
+    let request = new XMLHttpRequest();
+    request.open("GET", "http://localhost/Test_recrutement_MAC2/admin/checksAdmin/checkDelete.php?id=" + id);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+            if (request.responseText === "true") {
+                reloadTable();
+            }
+        }
+    }
+    request.send();
+
+}
