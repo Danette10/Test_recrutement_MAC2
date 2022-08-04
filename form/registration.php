@@ -15,7 +15,7 @@ include "../includes/head.php";
             <?php include "../includes/message.php"; ?>
         </div>
 
-        <h1 class="text-center text-white">Inscription</h1>
+        <h1 class="text-center text-white"><strong>Inscription</strong></h1>
 
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -50,6 +50,9 @@ include "../includes/head.php";
                             <div class="form-group mb-3 inputBox">
                                 <input type="password" class="p-3" id="password" name="password" required>
                                 <span>Mot de passe</span>
+                                <div class="eyes" id="eyes" onclick="viewPass('password')">
+                                    <img id="eyeImg" src="../images/eyes/eyes_open.png" width="35">
+                                </div>
                             </div>
 
                         </div>
@@ -91,6 +94,34 @@ include "../includes/head.php";
             </div>
         </div>
     </main>
+
+    <script>
+        $("#postalCode").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='postalCode']").val(),
+                    data: { q: request.term },
+                    dataType: "json",
+                    success: function (data) {
+                        let postcodes = [];
+                        response($.map(data.features, function (item) {
+                            if ($.inArray(item.properties.postcode, postcodes) == -1) {
+                                postcodes.push(item.properties.postcode);
+                                return { label: item.properties.postcode + " - " + item.properties.city,
+                                    city: item.properties.city,
+                                    value: item.properties.postcode
+                                };
+                            }
+                        }));
+                    }
+                });
+            },
+
+            select: function(event, ui) {
+                $('#city').val(ui.item.city);
+            }
+        });
+    </script>
 
     <?php
     include "../includes/script.php";

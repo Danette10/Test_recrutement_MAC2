@@ -9,6 +9,20 @@ function checkEmail() {
     }
 }
 
+function viewPass(id) {
+    let input = document.getElementById(id);
+    let eyeImg = document.getElementById("eyeImg");
+    let eyes = document.getElementById("eyes");
+
+    if (input.type === "password") {
+        input.type = "text";
+        eyeImg.src = "../images/eyes/eyes_close.png";
+    } else {
+        input.type = "password";
+        eyeImg.src = "../images/eyes/eyes_open.png";
+    }
+}
+
 function reloadTable(){
 
 let request = new XMLHttpRequest();

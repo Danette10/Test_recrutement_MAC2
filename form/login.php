@@ -15,7 +15,7 @@ include "../includes/head.php";
             <?php include "../includes/message.php"; ?>
         </div>
 
-        <h1 class="text-center text-white">Connexion</h1>
+        <h1 class="text-center text-white"><strong>Connexion</strong></h1>
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <form action="../checks/checkLogin.php" method="post">
@@ -26,8 +26,12 @@ include "../includes/head.php";
                     </div>
 
                     <div class="form-group mb-3 inputBox">
-                        <input type="password" class="p-3" id="password" name="password" required>
+
+                        <input type="password" class="p-3" id="passwordLogin" name="password" required>
                         <span>Mot de passe</span>
+                        <div class="eyes" id="eyes" onclick="viewPass('passwordLogin')">
+                            <img id="eyeImg" src="../images/eyes/eyes_open.png" width="35">
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Connexion</button>

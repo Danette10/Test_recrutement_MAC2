@@ -37,7 +37,7 @@ include "../includes/head.php";
         <?php include "../includes/message.php"; ?>
     </div>
 
-    <h1 class="text-center text-white">Modifier le profil de <?= $firstname . ' ' . $name ?></h1>
+    <h1 class="text-center text-white"><strong>Modifier le profil de <?= $firstname . ' ' . $name ?></strong></h1>
 
     <div class="container mt-5">
 

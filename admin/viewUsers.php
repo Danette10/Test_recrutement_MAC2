@@ -7,7 +7,7 @@ if(!isset($_SESSION['id']) || $_SESSION['rights'] != 2){
 }
 ?>
 <!doctype html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <?php
 $title = "Test de recrutement - Administration";
 $linkCss = "../css/style.css";
@@ -23,7 +23,7 @@ include "../includes/head.php";
             <?php include "../includes/message.php"; ?>
         </div>
 
-        <h1 class="text-center text-white">Administration</h1>
+        <h1 class="text-center text-white"><strong>Administration</strong></h1>
 
         <div id="users">
 

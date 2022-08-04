@@ -52,6 +52,11 @@ main, footer {
     padding: 30px;
 }
 
+.ico-admin:hover{
+    animation: rotate 2s infinite ease-in-out;
+}
+
+
 .inputBox{
     position: relative;
 }
@@ -94,6 +99,33 @@ textarea{
     border-radius: 5px !important;
 }
 
+.eyes{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.eyes:hover{
+    cursor: pointer;
+}
+
+#ui-id-1{
+    width: fit-content !important;
+    padding: 10px !important;
+    background: #055d52;
+    border-radius: 5px !important;
+    color: white !important;
+    border: transparent !important;
+}
+#ui-id-1 li{
+    list-style: none !important;
+}
+.ui-state-active{
+    background: #055d52 !important;
+    color: white !important;
+    border: none !important;
+    cursor: pointer !important;
+}
 
 
 
@@ -103,5 +135,12 @@ textarea{
 }
 
 footer{
-    background-color: #738DDF;
+    background-color: #20A389;
+}
+
+
+@keyframes rotate {
+    to {
+        transform: rotate3d(0, 1, 0, 359deg);
+    }
 }
